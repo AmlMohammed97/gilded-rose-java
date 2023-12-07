@@ -1,8 +1,6 @@
 package com.gildedrose.updateStrategies;
 
 import com.gildedrose.Item;
-import com.gildedrose.StrategyType;
-
 public class AgedBrieUpdateStrategy implements UpdateStrategy {
     Item item;
 
@@ -23,10 +21,4 @@ public class AgedBrieUpdateStrategy implements UpdateStrategy {
             }
         }
     }
-
-    @Override
-    public StrategyType getStrategyType() {
-        return StrategyType.AGED_BRIE;
-    }
-    
 }

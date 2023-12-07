@@ -1,7 +1,6 @@
 package com.gildedrose.updateStrategies;
 
 import com.gildedrose.Item;
-import com.gildedrose.StrategyType;
 
 public class BackstagePassesUpdateStrategy implements UpdateStrategy {
     Item item;
@@ -22,11 +21,5 @@ public class BackstagePassesUpdateStrategy implements UpdateStrategy {
                 item.quality +=2 ;
             }
         }
-    }
-
-    @Override
-    public StrategyType getStrategyType() {
-        return StrategyType.BACKSTAGE_PASSES;
-
     }
 }

@@ -8,9 +8,11 @@ import com.gildedrose.Item;
 
 public class SulfurasUpdateStrategyTest {
 
+    String SULFURAS_ITEM_NAME = "Sulfuras, Hand of Ragnaros";
+
     @Test
     void testUpdateQuality() {
-        Item item = new Item("Sulfuras, Hand of Ragnaros", 10, 80);
+        Item item = new Item(SULFURAS_ITEM_NAME, 10, 80);
         SulfurasUpdateStrategy app = new SulfurasUpdateStrategy(item);
         app.updateQuality();
         assertEquals(10, app.item.sellIn);
