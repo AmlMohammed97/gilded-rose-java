@@ -1,6 +1,9 @@
-package com.gildedrose;
+package com.gildedrose.updateStrategies;
 
-public class NormalItemUpdateStrategy implements Update {
+import com.gildedrose.Item;
+import com.gildedrose.StrategyType;
+
+public class NormalItemUpdateStrategy implements UpdateStrategy {
     Item item;
 
     public NormalItemUpdateStrategy(Item item) {
@@ -16,5 +19,11 @@ public class NormalItemUpdateStrategy implements Update {
         if (item.quality > 0 && item.sellIn < 0) {
             item.quality -= 1;
         }
+    }
+
+    @Override
+    public StrategyType getStrategyType() {
+        return StrategyType.NORMAL;
+
     }
 }

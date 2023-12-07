@@ -1,8 +1,11 @@
-package com.gildedrose;
+package com.gildedrose.updateStrategies;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+
+import com.gildedrose.Item;
+import com.gildedrose.updateStrategies.AgedBrieUpdateStrategy;
 
 public class AgedBrieUpdateStrategyTest {
 

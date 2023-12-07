@@ -1,9 +1,12 @@
-package com.gildedrose;
+package com.gildedrose.updateStrategies;
 
-public class BackstagePassesUpdateStrategy implements Update {
+import com.gildedrose.Item;
+import com.gildedrose.StrategyType;
+
+public class AgedBrieUpdateStrategy implements UpdateStrategy {
     Item item;
 
-    public BackstagePassesUpdateStrategy(Item item) {
+    public AgedBrieUpdateStrategy(Item item) {
         this.item = item;
     }
 
@@ -20,4 +23,10 @@ public class BackstagePassesUpdateStrategy implements Update {
             }
         }
     }
+
+    @Override
+    public StrategyType getStrategyType() {
+        return StrategyType.AGED_BRIE;
+    }
+    
 }
