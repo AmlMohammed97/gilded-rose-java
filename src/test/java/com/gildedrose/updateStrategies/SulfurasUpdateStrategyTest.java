@@ -11,11 +11,18 @@ public class SulfurasUpdateStrategyTest {
 
     @Test
     void testUpdateQuality() {
+        // GIVEN
         Item item = new Item(Constants.SULFURAS_ITEM_NAME, 10, 80);
-        SulfurasUpdateStrategy app = new SulfurasUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(10, app.item.sellIn);
-        assertEquals(80, app.item.quality);
+        // AND
+        SulfurasUpdateStrategy sulfurasUpdateStrategy = new SulfurasUpdateStrategy(item);
+
+        // WHEN
+        sulfurasUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(10, sulfurasUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(80, sulfurasUpdateStrategy.item.quality);
     }
 
 }

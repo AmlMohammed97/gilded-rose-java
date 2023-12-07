@@ -11,47 +11,82 @@ public class AgedBrieUpdateStrategyTest {
 
     @Test
     void testUpdateQualityIfConcertPassed() {
+        // GIVEN
         Item item = new Item(Constants.AGED_BRIE_ITEM_NAME, 0, 10);
-        AgedBrieUpdateStrategy app = new AgedBrieUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(-1, app.item.sellIn);
-        assertEquals(0, app.item.quality);
+        // AND
+        AgedBrieUpdateStrategy agedBrieUpdateStrategy = new AgedBrieUpdateStrategy(item);
+
+        // WHEN
+        agedBrieUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(-1, agedBrieUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(0, agedBrieUpdateStrategy.item.quality);
     }
     
     @Test
     void testUpdateQualityIfFiveDaysOrLessRemaining() {
+        // GIVEN
         Item item = new Item(Constants.AGED_BRIE_ITEM_NAME, 5, 10);
-        AgedBrieUpdateStrategy app = new AgedBrieUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(4, app.item.sellIn);
-        assertEquals(13, app.item.quality);
+        // AND
+        AgedBrieUpdateStrategy agedBrieUpdateStrategy = new AgedBrieUpdateStrategy(item);
+
+        // WHEN
+        agedBrieUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(4, agedBrieUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(13, agedBrieUpdateStrategy.item.quality);
     }
 
     @Test
     void testUpdateQualityIfTenDaysOrLessRemaining() {
+        // GIVEN
         Item item = new Item(Constants.AGED_BRIE_ITEM_NAME, 9, 10);
-        AgedBrieUpdateStrategy app = new AgedBrieUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(8, app.item.sellIn);
-        assertEquals(12, app.item.quality);
+        // AND
+        AgedBrieUpdateStrategy agedBrieUpdateStrategy = new AgedBrieUpdateStrategy(item);
+
+        // WHEN
+        agedBrieUpdateStrategy.updateQuality();
+        
+        // THEN
+        assertEquals(8, agedBrieUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(12, agedBrieUpdateStrategy.item.quality);
     }
 
     @Test
     void testUpdateQualityIfQualityIsFifty() {
-        Item item = new Item(Constants.AGED_BRIE_ITEM_NAME, 3, 50) ;
-        AgedBrieUpdateStrategy app = new AgedBrieUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(2, app.item.sellIn);
-        assertEquals(50, app.item.quality);
+        // GIVEN
+        Item item = new Item(Constants.AGED_BRIE_ITEM_NAME, 3, 50);
+        // AND
+        AgedBrieUpdateStrategy agedBrieUpdateStrategy = new AgedBrieUpdateStrategy(item);
+
+        // WHEN
+        agedBrieUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(2, agedBrieUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(50, agedBrieUpdateStrategy.item.quality);
     }
 
     @Test
     void testUpdateQualityIfQualityIsZero() {
+        // GIVEN
         Item item = new Item(Constants.AGED_BRIE_ITEM_NAME, 0, 0);
-        AgedBrieUpdateStrategy app = new AgedBrieUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(-1, app.item.sellIn);
-        assertEquals(0, app.item.quality);
+        // AND
+        AgedBrieUpdateStrategy agedBrieUpdateStrategy = new AgedBrieUpdateStrategy(item);
+
+        // WHEN
+        agedBrieUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(-1, agedBrieUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(0, agedBrieUpdateStrategy.item.quality);
     }
 
 }

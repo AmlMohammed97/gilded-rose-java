@@ -11,47 +11,82 @@ public class BackstagePassesUpdateStrategyTest {
 
     @Test
     void testUpdateQualityIfConcertPassed() {
+        // GIVEN
         Item item = new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 0, 10);
-        BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(-1, app.item.sellIn);
-        assertEquals(0, app.item.quality);
+        // AND
+        BackstagePassesUpdateStrategy backstagePassesUpdateStrategy = new BackstagePassesUpdateStrategy(item);
+        
+        // WHEN
+        backstagePassesUpdateStrategy.updateQuality();
+        
+        // THEN
+        assertEquals(-1, backstagePassesUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(0, backstagePassesUpdateStrategy.item.quality);
     }
 
     @Test
     void testUpdateQualityIfFiveDaysOrLessRemaining() {
+        // GIVEN
         Item item = new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 4, 10);
-        BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(3, app.item.sellIn);
-        assertEquals(13, app.item.quality);
+        // AND
+        BackstagePassesUpdateStrategy backstagePassesUpdateStrategy = new BackstagePassesUpdateStrategy(item);
+
+        // WHEN
+        backstagePassesUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(3, backstagePassesUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(13, backstagePassesUpdateStrategy.item.quality);
     }
     
     @Test
     void testUpdateQualityIfTenDaysOrLessRemaining() {
+        // GIVEN
         Item item = new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 10, 10);
-        BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(9, app.item.sellIn);
-        assertEquals(12, app.item.quality);
+        // AND
+        BackstagePassesUpdateStrategy backstagePassesUpdateStrategy = new BackstagePassesUpdateStrategy(item);
+
+        // WHEN
+        backstagePassesUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(9, backstagePassesUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(12, backstagePassesUpdateStrategy.item.quality);
     }
  
     @Test
     void testUpdateQualityIfQualityIsFifty() {
+        // GIVEN
         Item item =  new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 3, 50);
-        BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(2, app.item.sellIn);
-        assertEquals(50, app.item.quality);
+        // AND
+        BackstagePassesUpdateStrategy backstagePassesUpdateStrategy = new BackstagePassesUpdateStrategy(item);
+
+        // WHEN
+        backstagePassesUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(2, backstagePassesUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(50, backstagePassesUpdateStrategy.item.quality);
     }
 
     @Test
     void testUpdateQualityIfQualityIsZero() {
+        // GIVEN
         Item item = new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 0, 0);
-        BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(-1, app.item.sellIn);
-        assertEquals(0, app.item.quality);
+        // AND
+        BackstagePassesUpdateStrategy backstagePassesUpdateStrategy = new BackstagePassesUpdateStrategy(item);
+
+        // WHEN
+        backstagePassesUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(-1, backstagePassesUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(0, backstagePassesUpdateStrategy.item.quality);
     }
 
 }

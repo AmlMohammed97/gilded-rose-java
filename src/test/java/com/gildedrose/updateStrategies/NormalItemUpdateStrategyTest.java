@@ -12,29 +12,50 @@ public class NormalItemUpdateStrategyTest {
 
     @Test
     void testUpdateQualityIfQualityIsZero() {
+        // GIVEN
         Item item = new Item(NORMAL_ITEM_NAME, 3, 0);
-        NormalItemUpdateStrategy app = new NormalItemUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(2, app.item.sellIn);
-        assertEquals(0, app.item.quality);
+        // AND
+        NormalItemUpdateStrategy normalItemUpdateStrategy = new NormalItemUpdateStrategy(item);
+
+        // WHEN
+        normalItemUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(2, normalItemUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(0, normalItemUpdateStrategy.item.quality);
     }
 
     @Test
     void testUpdateIfSellByDateDidntPass() {
+        // GIVEN
         Item item = new Item(NORMAL_ITEM_NAME, 3, 1);
-        NormalItemUpdateStrategy app = new NormalItemUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(2, app.item.sellIn);
-        assertEquals(0, app.item.quality);
+        // AND
+        NormalItemUpdateStrategy normalItemUpdateStrategy = new NormalItemUpdateStrategy(item);
+
+        // WHEN
+        normalItemUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(2, normalItemUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(0, normalItemUpdateStrategy.item.quality);
     }
 
     @Test
     void testUpdateQualityIfSellByDatePassed() {
+        // GIVEN
         Item item = new Item(NORMAL_ITEM_NAME, 0, 10);
-        NormalItemUpdateStrategy app = new NormalItemUpdateStrategy(item);
-        app.updateQuality();
-        assertEquals(-1, app.item.sellIn);
-        assertEquals(8, app.item.quality);
+        // AND
+        NormalItemUpdateStrategy normalItemUpdateStrategy = new NormalItemUpdateStrategy(item);
+
+        // WHEN
+        normalItemUpdateStrategy.updateQuality();
+
+        // THEN
+        assertEquals(-1, normalItemUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(8, normalItemUpdateStrategy.item.quality);
     }
 
 }
