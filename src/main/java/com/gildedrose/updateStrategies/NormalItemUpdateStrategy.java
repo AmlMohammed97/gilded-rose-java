@@ -12,11 +12,11 @@ public class NormalItemUpdateStrategy implements UpdateStrategy {
 
     @Override
     public void updateQuality() {
-        item.sellIn -= 1;
         // At the end of each day our system lowers both values for every item
         if (item.quality > Constants.QUALITY_MINIMUM_VALUE) {
             item.quality -= 1;
         }
+        item.sellIn -= 1;
         // Once the sell by date has passed, Quality degrades twice as fast
         if (item.quality > Constants.QUALITY_MINIMUM_VALUE && item.sellIn < Constants.SELL_IN_DATE_PASSING_VALUE) {
             item.quality -= 1;

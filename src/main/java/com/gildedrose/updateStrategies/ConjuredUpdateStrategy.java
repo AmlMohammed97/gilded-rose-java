@@ -12,13 +12,18 @@ public class ConjuredUpdateStrategy implements UpdateStrategy {
 
     @Override
     public void updateQuality() {
-        item.sellIn -= 1;
-        if (item.quality > 1 && item.sellIn >= Constants.SELL_IN_DATE_PASSING_VALUE) {
+        if (item.quality > 1) {
             // Degrade in quality twice as fast as normal items
             item.quality -= 2;
-        } else if (item.quality > 3 && item.sellIn < Constants.SELL_IN_DATE_PASSING_VALUE) {
+        } else item.quality = Constants.QUALITY_MINIMUM_VALUE;
+        
+        item.sellIn -= 1;
+        
+        if (item.sellIn < Constants.SELL_IN_DATE_PASSING_VALUE) {
             // Once the sell by date has passed, Quality degrades twice as fast
-            item.quality -= 4;
-        } else item.quality = Constants.QUALITY_MINIMUM_VALUE; // Quality of an item is never negative
+            if(item.quality > 1) {
+                item.quality -= 2;
+            } else item.quality = Constants.QUALITY_MINIMUM_VALUE; // Quality of an item is never negative
+        }
     }
 }

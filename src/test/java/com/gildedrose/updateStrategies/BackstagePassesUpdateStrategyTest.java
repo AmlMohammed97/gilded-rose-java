@@ -58,6 +58,22 @@ public class BackstagePassesUpdateStrategyTest {
     }
  
     @Test
+    void testUpdateQualityIfMoreThanTenDaysRemaining() {
+        // GIVEN
+        Item item = new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 11, 10);
+        // AND
+        BackstagePassesUpdateStrategy backstagePassesUpdateStrategy = new BackstagePassesUpdateStrategy(item);
+
+        // WHEN
+        backstagePassesUpdateStrategy.updateQuality();
+        
+        // THEN
+        assertEquals(10, backstagePassesUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(11, backstagePassesUpdateStrategy.item.quality);
+    }
+
+    @Test
     void testUpdateQualityIfQualityIsFifty() {
         // GIVEN
         Item item =  new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 3, 50);

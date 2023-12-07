@@ -10,9 +10,9 @@ import com.gildedrose.Item;
 public class ConjuredUpdateStrategyTest {
 
     @Test
-    void testUpdateQualityIfQualityIsOneAndSellByDatePassed() {
+    void testUpdateQualityIfQualityIsThreeAndSellByDatePassed() {
         // GIVEN
-        Item item = new Item(Constants.CONJURED_ITEM_NAME, 0, 1);
+        Item item = new Item(Constants.CONJURED_ITEM_NAME, 0, 3);
         // AND
         ConjuredUpdateStrategy conjuredUpdateStrategy = new ConjuredUpdateStrategy(item);
 

@@ -58,6 +58,22 @@ public class AgedBrieUpdateStrategyTest {
     }
 
     @Test
+    void testUpdateQualityIfMoreThanTenDaysRemaining() {
+        // GIVEN
+        Item item = new Item(Constants.AGED_BRIE_ITEM_NAME, 11, 10);
+        // AND
+        AgedBrieUpdateStrategy agedBrieUpdateStrategy = new AgedBrieUpdateStrategy(item);
+
+        // WHEN
+        agedBrieUpdateStrategy.updateQuality();
+        
+        // THEN
+        assertEquals(10, agedBrieUpdateStrategy.item.sellIn);
+        // AND
+        assertEquals(11, agedBrieUpdateStrategy.item.quality);
+    }
+
+    @Test
     void testUpdateQualityIfQualityIsFifty() {
         // GIVEN
         Item item = new Item(Constants.AGED_BRIE_ITEM_NAME, 3, 50);
