@@ -4,15 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import com.gildedrose.Constants;
 import com.gildedrose.Item;
 
 public class BackstagePassesUpdateStrategyTest {
 
-    String BACKSTAGE_PASSES_ITEM_NAME = "Backstage passes to a TAFKAL80ETC concert";
-
     @Test
     void testUpdateQualityIfConcertPassed() {
-        Item item = new Item(BACKSTAGE_PASSES_ITEM_NAME, 0, 10);
+        Item item = new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 0, 10);
         BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
         app.updateQuality();
         assertEquals(-1, app.item.sellIn);
@@ -21,7 +20,7 @@ public class BackstagePassesUpdateStrategyTest {
 
     @Test
     void testUpdateQualityIfFiveDaysOrLessRemaining() {
-        Item item = new Item(BACKSTAGE_PASSES_ITEM_NAME, 4, 10);
+        Item item = new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 4, 10);
         BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
         app.updateQuality();
         assertEquals(3, app.item.sellIn);
@@ -30,7 +29,7 @@ public class BackstagePassesUpdateStrategyTest {
     
     @Test
     void testUpdateQualityIfTenDaysOrLessRemaining() {
-        Item item = new Item(BACKSTAGE_PASSES_ITEM_NAME, 10, 10);
+        Item item = new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 10, 10);
         BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
         app.updateQuality();
         assertEquals(9, app.item.sellIn);
@@ -39,7 +38,7 @@ public class BackstagePassesUpdateStrategyTest {
  
     @Test
     void testUpdateQualityIfQualityIsFifty() {
-        Item item =  new Item(BACKSTAGE_PASSES_ITEM_NAME, 3, 50);
+        Item item =  new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 3, 50);
         BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
         app.updateQuality();
         assertEquals(2, app.item.sellIn);
@@ -48,7 +47,7 @@ public class BackstagePassesUpdateStrategyTest {
 
     @Test
     void testUpdateQualityIfQualityIsZero() {
-        Item item = new Item(BACKSTAGE_PASSES_ITEM_NAME, 0, 0);
+        Item item = new Item(Constants.BACKSTAGE_PASSES_ITEM_NAME, 0, 0);
         BackstagePassesUpdateStrategy app = new BackstagePassesUpdateStrategy(item);
         app.updateQuality();
         assertEquals(-1, app.item.sellIn);

@@ -1,5 +1,6 @@
 package com.gildedrose.updateStrategies;
 
+import com.gildedrose.Constants;
 import com.gildedrose.Item;
 
 public class NormalItemUpdateStrategy implements UpdateStrategy {
@@ -12,10 +13,12 @@ public class NormalItemUpdateStrategy implements UpdateStrategy {
     @Override
     public void updateQuality() {
         item.sellIn -= 1;
-        if (item.quality > 0) {
+        // At the end of each day our system lowers both values for every item
+        if (item.quality > Constants.QUALITY_MINIMUM_VALUE) {
             item.quality -= 1;
         }
-        if (item.quality > 0 && item.sellIn < 0) {
+        // Once the sell by date has passed, Quality degrades twice as fast
+        if (item.quality > Constants.QUALITY_MINIMUM_VALUE && item.sellIn < Constants.SELL_IN_DATE_PASSING_VALUE) {
             item.quality -= 1;
         }
     }
